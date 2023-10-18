@@ -1,0 +1,20 @@
+
+#sketch{
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
+    border: 10px solid violet;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+}
+
+.square{
+    flex: 1;
+    background-color: lightgray;
+    border: 1px solid black;
+}
+
