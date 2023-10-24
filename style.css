@@ -1,10 +1,41 @@
+ 
+body{
+    background-color: #e7e7e7;
+    font-family: 'Roboto', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.header{
+    padding: 30px 0;
+ }
+ 
+ .title{
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+ }
+
+ .main{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    gap: 100px;
+    max-width: 1000px;
+ }
 
 #sketch{
     display: flex;
     flex-wrap: wrap;
     width: 600px;
     height: 600px;
-    border: 10px solid violet;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 13px;
+    border-right: 1px solid rgb(146, 146, 146);
+    border-bottom: 1px solid rgb(146, 146, 146);
 }
 
 .row{
@@ -14,7 +45,8 @@
 
 .square{
     flex: 1;
-    background-color: lightgray;
-    border: 1px solid black;
+    background-color: white;
+    border-top: 1px solid rgb(146, 146, 146);
+    border-left: 1px solid rgb(146, 146, 146);
 }
 
