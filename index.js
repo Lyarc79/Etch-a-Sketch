@@ -29,6 +29,30 @@ function createSketchPad(number) {
 
 createSketchPad(32);
 
+// Color picker event
+const colorPicker = document.getElementById('color-picker');
+let currentColor = colorPicker.value;
+colorPicker.addEventListener('input', function (event){
+    const selectedColor = event.target.value;
+    currentColor = selectedColor;
+})
+
+// Random RGB picker
+const randomRGBbtn = document.getElementById('randomColorBtn');
+let isRandomRGBMode = false;
+randomRGBbtn.addEventListener('click', () => {
+    isRandomRGBMode = !isRandomRGBMode;
+    randomRGBbtn.textContent = isRandomRGBMode ? 'Random Color Mode (On)' : 'Random Color Mode (Off)';
+})
+
+// Function to get the random RGB
+function getRandomRGBColor(){
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r},${g},${b})`;
+}
+
 // This do the painting
 function sketchDrawing() {
     const squares = document.getElementsByClassName('square');
@@ -46,7 +70,11 @@ function sketchDrawing() {
         squares[i].addEventListener('mouseover', (e) => {
             if (isDrawing) {
                 console.log("Drawing...");
-                squares[i].style = "background-color: red";
+
+                if(isRandomRGBMode){
+                    currentColor = getRandomRGBColor();
+                }
+                squares[i].style.backgroundColor = currentColor;
             }
         })
     }
@@ -67,6 +95,6 @@ resizeBtn.addEventListener('click', () => {
     mainContainer.innerHTML = '';
     createSketchPad(answer);
     sketchDrawing();
-}
-)
+})
+
 

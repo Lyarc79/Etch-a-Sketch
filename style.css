@@ -27,6 +27,12 @@ body{
     max-width: 1000px;
  }
 
+ .settings{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+ }
+
 #sketch{
     display: flex;
     flex-wrap: wrap;
