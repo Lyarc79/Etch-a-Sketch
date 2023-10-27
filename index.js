@@ -32,7 +32,7 @@ createSketchPad(32);
 // Color picker event
 const colorPicker = document.getElementById('color-picker');
 let currentColor = colorPicker.value;
-colorPicker.addEventListener('input', function (event){
+colorPicker.addEventListener('input', function (event) {
     const selectedColor = event.target.value;
     currentColor = selectedColor;
 })
@@ -45,13 +45,40 @@ randomRGBbtn.addEventListener('click', () => {
     randomRGBbtn.textContent = isRandomRGBMode ? 'Random Color Mode (On)' : 'Random Color Mode (Off)';
 })
 
-// Function to get the random RGB
-function getRandomRGBColor(){
+// Function to get the random RGB color
+function getRandomRGBColor() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
     return `rgb(${r},${g},${b})`;
 }
+
+// Eraser
+const eraseBtn = document.getElementById('eraseBtn');
+let isErasing = false;
+eraseBtn.addEventListener('click', () => {
+    isErasing = !isErasing;
+    eraseBtn.textContent = isErasing ? 'Eraser (On)' : 'Eraser(Off)';
+});
+
+mainContainer.addEventListener('mousemove', (e) =>{
+    if(isErasing && e.buttons === 1){
+        const square = e.target;
+        if(square.classList.contains('square')){
+            square.style.backgroundColor = 'transparent';
+        }
+    }
+})
+
+
+// Clear grid
+const clearBtn = document.getElementById('clearBtn');
+const squares = document.getElementsByClassName('square');
+clearBtn.addEventListener('click', () => {
+    for(let i = 0; i < squares.length; i++){
+        squares[i].style.backgroundColor = 'transparent';
+    }
+})
 
 // This do the painting
 function sketchDrawing() {
@@ -71,11 +98,14 @@ function sketchDrawing() {
             if (isDrawing) {
                 console.log("Drawing...");
 
-                if(isRandomRGBMode){
+                if (isRandomRGBMode) {
                     currentColor = getRandomRGBColor();
                 }
                 squares[i].style.backgroundColor = currentColor;
             }
+        })
+        squares[i].addEventListener('dragstart', (e) => {
+            e.preventDefault();
         })
     }
 }
