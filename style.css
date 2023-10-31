@@ -19,20 +19,20 @@ body{
 
 .header{
     margin-top: 30px;
-    padding: 30px 0;
+    padding: 10px 0;
  }
  
  .title{
     text-align: center;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: bold;
     color: white;
-    text-shadow: 5px 5px var(--secondary-light);
+    text-shadow: 5px 5px 5px rgba(109, 109, 202, 0.7);
  }
 
  .main{
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-top: 50px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-evenly;
     max-width: 1400px;
@@ -44,8 +44,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 660px;
-    height: 660px;
+    width: 600px;
+    height: 600px;
     background-color: var(--secondary-dark);
     box-shadow: rgba(0, 0, 0, 0.25) 10px 10px 10px;
     border-radius: 5px;
@@ -54,8 +54,8 @@ body{
 #sketch{
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
-    height: 600px;
+    width: 550px;
+    height: 550px;
     background-color: #ffffff;
     border-right: 1px solid rgb(146, 146, 146);
     border-bottom: 1px solid rgb(146, 146, 146);
@@ -88,17 +88,88 @@ body{
 div > button{
     color: white;
     padding: 10px 15px;
-    border: 1px solid white;
-    border-radius: 2px;
+    border: none;
+    border-radius: 5px;
     height: 50px;
     width: 100%;
     text-align: center;
-    background-color: transparent;
-    font-size: 14px;
+    background-color: var(--primary-light);
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#colorBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+div > button:hover{
+    background-color: var(--secondary-light);
+    transform: scale(1.05);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+div > button.active{
+    background-color: var(--primary-dark);
 }
 
 div > h3{
-    font-size: 42px;
+    font-size: 38px;
     color: white;
-    text-shadow: 5px 5px var(--secondary-light);
+    text-shadow: 5px 5px 5px rgba(135, 135, 250, 0.7);
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+#sliderBar{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+}
+
+#sliderSizeDisplay{
+    color: white;
+    font-size: 16px;
+}
+
+.slider{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: rgb(218, 218, 218);
+    outline: none;
+    border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background-color: var(--primary-light);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#footer{
+    text-align: center;
+    padding: 30px 0px 10px 0px;
+    color: var(--primary-light);
+}
+
+#github-logo{
+    color: var(--primary-light);
+    font-size: 22px;
+    margin-right: 10px;
+    margin-left: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+#github-logo:hover{
+    transform: scale(1.1) rotate(360deg);
+    transition: transform 0.3s ease-in-out;
 }

@@ -37,12 +37,25 @@ colorPicker.addEventListener('input', function (event) {
     currentColor = selectedColor;
 })
 
+// Color button
+const colorBtn = document.getElementById('colorBtn');
+colorBtn.addEventListener('click', () =>{
+    colorBtn.classList.toggle('active');
+    eraseBtn.classList.remove('active');
+    randomRGBbtn.classList.remove('active');
+    isRandomRGBMode = false;
+    isErasing = false;
+    currentColor = colorPicker.value;
+})
+
 // Random RGB picker
 const randomRGBbtn = document.getElementById('randomColorBtn');
 let isRandomRGBMode = false;
 randomRGBbtn.addEventListener('click', () => {
     isRandomRGBMode = !isRandomRGBMode;
-    randomRGBbtn.textContent = isRandomRGBMode ? 'Random Color Mode (On)' : 'Random Color Mode (Off)';
+    randomRGBbtn.classList.toggle('active', isRandomRGBMode);
+    eraseBtn.classList.remove('active');
+    colorBtn.classList.remove('active');
 })
 
 // Function to get the random RGB color
@@ -58,7 +71,9 @@ const eraseBtn = document.getElementById('eraseBtn');
 let isErasing = false;
 eraseBtn.addEventListener('click', () => {
     isErasing = !isErasing;
-    eraseBtn.textContent = isErasing ? 'Eraser (On)' : 'Eraser(Off)';
+    eraseBtn.classList.toggle('active', isErasing);
+    randomRGBbtn.classList.remove('active');
+    colorBtn.classList.remove('active');
 });
 
 mainContainer.addEventListener('mousemove', (e) =>{
@@ -70,7 +85,6 @@ mainContainer.addEventListener('mousemove', (e) =>{
     }
 })
 
-
 // Clear grid
 const clearBtn = document.getElementById('clearBtn');
 const squares = document.getElementsByClassName('square');
@@ -79,6 +93,7 @@ clearBtn.addEventListener('click', () => {
         squares[i].style.backgroundColor = 'transparent';
     }
 })
+
 
 // This do the painting
 function sketchDrawing() {
@@ -112,19 +127,15 @@ function sketchDrawing() {
 
 sketchDrawing();
 
-// Grid resizing button
-const resizeBtn = document.getElementById('resizeBtn');
-resizeBtn.addEventListener('click', () => {
-    let answer = prompt("Please enter your desired size");
-    answer = parseInt(answer);
-    if (answer > 100) {
-        answer = 100;
-    } else if (answer <= 0) {
-        answer = 1;
-    }
+// Grid resizing slider
+const slider = document.getElementById('slider');
+const sliderSizeDisplay = document.getElementById('sliderSizeDisplay');
+
+slider.addEventListener('input', () => {
+    const newSize = slider.value;
+    sliderSizeDisplay.textContent = `${newSize} x ${newSize}`;
     mainContainer.innerHTML = '';
-    createSketchPad(answer);
+    createSketchPad(newSize);
     sketchDrawing();
 })
-
 

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/967516047d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -14,20 +15,31 @@
     <div class="main">
         <div class="settings">
             <h3>Settings</h3>
-            <button id="resizeBtn">Click to resize grid</button>
-            <button>
+            <button id="colorBtn">
                 Color
                 <input type="color" value="#a156e0" id="color-picker">
             </button>
             <button id="randomColorBtn">Random color mode</button>
             <button id="eraseBtn">Erase</button>
             <button id="clearBtn">Clear</button>
+            <div id="sliderBar">
+                <label id="sliderSizeDisplay">32 x 32</label>
+                <input type="range" min="1" max="100" value="32" id="slider" class="slider">
+            </div>
         </div>
         <div class="sketchWrap">
             <div id="sketch"></div>
         </div>
     </div>
-    
+    <footer id="footer">
+        <p> Made by Lyarc79
+            <a href="https://github.com/Lyarc79" target="_blank">
+                <i id="github-logo" class="fa-brands fa-github"></i>
+            </a>
+        </p>
+    </footer>
+
     <script src="./index.js"></script>
 </body>
+
 </html>
