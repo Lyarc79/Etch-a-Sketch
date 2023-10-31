@@ -1,1 +1,2 @@
-# Etch-a-Sketch project from TOP
+# Etch-a-Sketch
+This is a project from The Odin Project
