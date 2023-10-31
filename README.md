@@ -1,2 +1,2 @@
 # Etch-a-Sketch
-This is a project from The Odin Project
+This is an Etch-a-Sketch website created on The Odin Project curriculum.
